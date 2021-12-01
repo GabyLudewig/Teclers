@@ -1,0 +1,28 @@
+1-inicio
+2-declaraciones de variables e iniciacion con algun valor 
+3-ingreso de valores y lectura de valores 
+4-preguntamos si los 3 valores son iguales 
+5- en caso de ser iguales regresa al punto 3 
+6-comparar los 3 numeros
+7- si el primer numero es mayor que el segundo numero y el tercer numero  -imprimimos el primer valor es mayor que el segundo y el tercero
+8- si el segundo numero es mayor que el primer y el tercer numero  -imprimimos el segundo valor es mayor que el primero y el tercero
+9- si el tercer numero es mayor que el segundo numero y el primero -imprimimos el tercer valor es mayor que el segundo y el primero
+10-fin 
+
+
+-inicio
+
+*inicializar variables:A=0,B=0,C=0
+
+*solicitar tres valores distintos
+
+*leer los tres valores 
+
+*asignarlos a variables A,B y C 
+*si A= B o =C regresa al paso 3 porque los valores deben ser distintos 
+*si A > B y >C      imprime A "es mayor "
+*si B > A y >C      imprime B "es mayor "
+* en caso deque no se cumplan las condiciones anteriores imprime c "es mayor "
+*fin_si 
+*fin 
+

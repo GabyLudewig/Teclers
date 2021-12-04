@@ -14,4 +14,3 @@ function getUsuariosRandom (id){
     })
 }
 
-getUsuariosRandom();

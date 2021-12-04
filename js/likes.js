@@ -24,25 +24,10 @@ function inicio(){
     for(let i=0; i<ArrayLIkes.length; i++){
         if(ArrayLIkes[i]>max) max=ArrayLIkes[i];
     } 
- //   console.log('la foto '+ (ArrayLIkes.findIndex(max)+1 )+' tien mas "likes"')
- //   if(valorA===valorB ||valorA===valorC){
- //       alert('los valores ingresados deben ser distintos');
- //       return
-//
- //   }
-   // if(valorA>valorB && valorA>valorC){
-    //    console.log('la primera foto tiene mas "likes"');
-      //  return
-   // };
-    
-    //if(valorB>valorA && valorB>valorC){
-      //  console.log('la segunda  foto tiene mas "likes"');
-        //return
-    //}else{
-      //  console.log('la tercera foto tiene mas "likes"');
-        //return
-    //}
-    
-}
+    console.log('la foto '+ (ArrayLIkes.findIndex(max)+1 )+' tien mas "likes"')
+    if(valorA===valorB ||valorA===valorC){
+        alert('los valores ingresados deben ser distintos');
+        return
+         }
+    }
 
-inicio()

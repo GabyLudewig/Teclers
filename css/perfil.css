@@ -78,6 +78,13 @@ button.primary.ghost {
 	color: #daa044;
 }
 
+input[type=button]{
+	background-color: transparent;
+	border: 1px solid #cb7403;
+	border-radius: 3px;
+	color: #daa044;
+}
+
 .skills {
 	background-color: #36221a;
 	text-align: left;

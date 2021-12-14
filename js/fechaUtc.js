@@ -16,8 +16,6 @@ server.get('/', (req, res) => {
     
 });
 
-server.listen(3001, () => { });
-
 console.log("La hora local es: " + (now.format('DD/MM/YYYY hh:mm:ss')));
 console.log("La hora UTC es: " + (utc.format('DD/MM/YYYY hh:mm:ss')));
 console.log('La diferencia es de: ' + duration.hours() + " horas");

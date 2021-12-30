@@ -5,16 +5,29 @@ const cors = require("cors")
 const midd = require("./middlewares/midd")
 const app = express()
 const sequelize = require("../db/conexion")
+const bodyParser = require('body-parser')
 dotenv.config()
 app.use(express.json())
 app.use(cors())
 app.use(midd.log)
+app.use(bodyParser.json());
 
 
-app.listen(process.env.PORT, () => { 
-    console.log("Servidor inicializado correctamente en http://" + process.env.HOST + process.env.PORT)
-});
 
+async function serverStart (){
+
+    try{
+
+    await sequelize.authenticate();
+    console.log('Correct SQL conecction');
+    app.listen(3001,()=>{
+        console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
+    })
+}catch(error){
+    console.error('SQL error conection')
+}
+}
+serverStart ()
 userRoutes(app)
 
 

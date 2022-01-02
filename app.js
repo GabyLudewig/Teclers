@@ -1,23 +1,18 @@
 const express = require("express")
 const dotenv = require("dotenv")
-const userRoutes = require("../routes/user")
+const registro = require("./back/registro")
 const cors = require("cors")
-const midd = require("./middlewares/midd")
+// const midd = require("../middlewares/midd")
 const app = express()
-const sequelize = require("../db/conexion")
-const bodyParser = require('body-parser')
+const sequelize = require("./db/conexion")
 dotenv.config()
 app.use(express.json())
 app.use(cors())
-app.use(midd.log)
-app.use(bodyParser.json());
-
-
+// app.use(midd.log)
 
 async function serverStart (){
 
     try{
-
     await sequelize.authenticate();
     console.log('Correct SQL conecction');
     app.listen(3001,()=>{
@@ -25,10 +20,9 @@ async function serverStart (){
     })
 }catch(error){
     console.error('SQL error conection')
-}
-}
+}}
 serverStart ()
-userRoutes(app)
+registro (app)
 
 
 

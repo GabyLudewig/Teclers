@@ -14,14 +14,14 @@
   </head>
   <body>
     <div class="background">
-      <form action="http://localhost:3001/perfil" method="post">
+      <form>
         <h3>Login</h3>
         <label for="username">Tecler</label>
-        <input type="text" placeholder="Correo" id="username" name="email">
+        <input type="text" placeholder="Correo" id="usuario" name="email">
         <label for="password">Contraseña</label>
-        <input type="password" placeholder="Contraseña" id="password"
+        <input type="password" placeholder="Contraseña" id="contraseña"
           name="contraseña">
-        <button type="submit">Ingresar</button>
+        <button type="button" onclick="login()">Ingresar</button>
         <a class="social" href="registro.html">Registrarse</a>
       </form>
     </div>

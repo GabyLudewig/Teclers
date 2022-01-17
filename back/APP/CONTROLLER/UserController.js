@@ -1,6 +1,6 @@
 //Importamos los modulos necesarios
 const jwt = require('jsonwebtoken')
-const modeloUsuarios = require('./UserModel')
+const modeloUsuarios = require('../MODEL/UserModel')
 
 module.exports.generaToken = async (data)=> {
   const resultado = jwt.sign({

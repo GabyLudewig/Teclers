@@ -1,10 +1,10 @@
 const express = require("express")
 const dotenv = require("dotenv")
-const registro = require("./back/registro")
 const cors = require("cors")
 // const midd = require("../middlewares/midd")
 const app = express()
 const sequelize = require("./db/conexion")
+const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios")
 dotenv.config()
 app.use(express.json())
 app.use(cors())
@@ -22,7 +22,7 @@ async function serverStart (){
     console.error('SQL error conection')
 }}
 serverStart ()
-registro (app)
+vistaUsuario(app)
 
 
 

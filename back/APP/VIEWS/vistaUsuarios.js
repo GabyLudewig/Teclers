@@ -1,20 +1,11 @@
 //Importamos los modulos que vamos a utilizar
-const midd = require('../middlewares/midd.usuarios')
-const ControladorUsuarios = require('./UserController')
+const midd = require('../../../middlewares/midd.usuarios')
+const ControladorUsuarios = require('../CONTROLLER/UserController')
 const cors = require('cors')
 
 //Exportar los modulos para ser usados.
 module.exports = async (app)=>{
-    app.get('/login', async (req, res) => {
-      try {
-        console.log(`Renderizando el login`)
-        res.render('login')
-      } catch (err) {
-        console.log(err)
-        res.status(400).json({ message: "Error en el ingreso al login", error: err})
-      }
-    })
-
+  
     app.post('/usuario', midd.validarDatosDeUsuario, async (req, res) => {
       const usuario = req.body
       try {

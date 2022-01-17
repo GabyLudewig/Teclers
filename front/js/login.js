@@ -1,14 +1,14 @@
 async function login() {
     const usuario = document.getElementById("usuario").value
     const contraseña = document.getElementById("contraseña").value
-    console.log(usuario)
+    console.log(usuario, contraseña)
     try { 
-      const makeLogin = await fetch('http://localhost:3000/ingresar', {
+      const makeLogin = await fetch('http://localhost:3001/ingresar', {
         method: 'POST',
         headers: {"Content-type": "application/json;charset=UTF-8"},
         body: JSON.stringify({
           usuario,
-          pass: contraseña
+          contraseña: contraseña
         })
       });
       const parsedLogin = await makeLogin.json()

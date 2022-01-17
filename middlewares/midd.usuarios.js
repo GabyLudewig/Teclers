@@ -37,3 +37,4 @@ module.exports.validarTokenUsuario = async (req,res,next)=>{
         res.status(500).json({error: err.message})
     }
 }
+

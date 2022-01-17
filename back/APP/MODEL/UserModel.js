@@ -1,12 +1,12 @@
 //Importamos los modulos requeridos
-const Usuarios = require('../db/db.modelo.usuarios')
+const Usuarios = require('../../../db/db.modelo.usuarios')
 
 
 //Exportamos los modulos
 
 module.exports.encontrarUsuario = async (usuario)=> {
   try {
-      let usuarioEncontrado = await Usuarios.findOne({where: {usuario: `${usuario.usuario}`, pass: `${usuario.pass}`}})
+      let usuarioEncontrado = await Usuarios.findOne({where: {usuario: `${usuario.usuario}`, pass: `${usuario.contraseña}`}})
       console.log(usuarioEncontrado)
       return usuarioEncontrado
   }catch (error){

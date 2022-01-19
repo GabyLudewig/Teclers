@@ -1,22 +1,48 @@
-const express = require("express")
-const dotenv = require("dotenv")
-const cors = require("cors")
-// const midd = require("../middlewares/midd")
+//1-Invocamos express
+const express = require("express");
+const cors = require("cors");
 const app = express()
-const sequelize = require("./db/conexion")
-const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios")
-dotenv.config()
-app.use(express.json())
-app.use(cors())
-// app.use(midd.log)
+const sequelize = require("./database/conexion");
+const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios");
+
+//2-Seteamos urlencoded para capturar los datos del formulario
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+app.use(cors());
+
+//3-Invocamos a dotenv
+const dotenv = require("dotenv");
+dotenv.config({path:'/ENV'});
+
+//4- el directorio public
+app.use('/resources', express.static('public'));
+app.use('/resources', express.static(__dirname + '/public'))
+
+//5-Establecemos el motor de platillas
+app.set('view engine', 'ejs');
+
+//6-Invocamos a bcryptjs
+require('bcryptjs')
+
+//7-Var. de session
+const session = require('express-session');
+app.use(session({
+    secret:'secret',
+    resave: true,
+    saveUninitialized:true
+}))
+
+
+
+
 
 async function serverStart (){
 
     try{
     await sequelize.authenticate();
     console.log('Correct SQL conecction');
-    app.listen(3001,()=>{
-        console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
+    app.listen(3001,(req, res)=>{
+       console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
     })
 }catch(error){
     console.error('SQL error conection')

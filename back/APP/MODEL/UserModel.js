@@ -1,12 +1,12 @@
 //Importamos los modulos requeridos
-const Usuarios = require('../../../db/db.modelo.usuarios')
+const sequelize = require('../../../database/conexion')
 
 
 //Exportamos los modulos
 
 module.exports.encontrarUsuario = async (usuario)=> {
   try {
-      let usuarioEncontrado = await Usuarios.findOne({where: {usuario: `${usuario.usuario}`, pass: `${usuario.contraseña}`}})
+      let usuarioEncontrado = await sequelize.query({where: {email: `${email.email}`, pass: `${contraseña.contraseña}`}})
       console.log(usuarioEncontrado)
       return usuarioEncontrado
   }catch (error){
@@ -17,7 +17,9 @@ module.exports.encontrarUsuario = async (usuario)=> {
 
 module.exports.crearUsuario = async (usuario)=> {
   try {
-      let usuarioNuevo = await Usuarios.create(usuario)
+      let usuarioNuevo = await sequelize.query(`INSERT INTO usuarios (nombres, apellidos, email, contraseña, fecha_nac) 
+      VALUES ('${usuario.nombres}','${usuario.apellidos}','${usuario.email}','${usuario.contraseña}',
+      '${usuario.fecha_nac}')`)
       console.log(usuarioNuevo)
       return usuarioNuevo
   }catch (error){

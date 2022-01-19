@@ -1,7 +1,6 @@
 {
   "name": "tete",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,12 +8,30 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "html": "^1.0.0",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "resources": "^0.4.3",
+    "secret": "^1.2.0",
     "sequelize": "^6.12.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabyLudewig/Teclers.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/GabyLudewig/Teclers/issues"
+  },
+  "homepage": "https://github.com/GabyLudewig/Teclers#readme",
+  "description": ""
 }

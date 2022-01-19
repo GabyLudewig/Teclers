@@ -29,15 +29,6 @@ module.exports.findUser = async (usuario)=> {
   }
 }
 
-module.exports.deleteUser = async (idUsuario)=> {
-  try {
-      let result = await modeloUsuarios.borrarUsuario(idUsuario)
-      return result
-  }catch (error) {
-      console.log("Error al borrar usuario en controlador", error)
-      throw new Error (error)
-  }
-}
 
 
 module.exports.addUser = async (usuario)=> {

@@ -1,5 +1,5 @@
 async function login() {
-    const usuario = document.getElementById("usuario").value
+    const usuario = document.getElementById("email").value
     const contraseña = document.getElementById("contraseña").value
     console.log(usuario, contraseña)
     try { 
@@ -7,7 +7,7 @@ async function login() {
         method: 'POST',
         headers: {"Content-type": "application/json;charset=UTF-8"},
         body: JSON.stringify({
-          usuario,
+          email,
           contraseña: contraseña
         })
       });

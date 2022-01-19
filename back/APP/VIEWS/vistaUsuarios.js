@@ -31,15 +31,4 @@ module.exports = async (app)=>{
       }
     })
 
-    app.delete('/usuario/:id', midd.validarLogin, async (req, res) => {
-      const idUsuario = req.params.id
-      try {
-        const usuarioBorrado = await ControladorUsuarios.deleteUser(idUsuario)
-        res.status(200).json({ message: 'Usuario borrado exitosamente', usuario: usuarioBorrado})
-      } catch (err) {
-        res.status(400).json({ message: 'Problema borrando al usuario', error: err})
-      }
-    })
-
-
 }

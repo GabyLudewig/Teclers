@@ -1,7 +1,7 @@
 async function login() {
-    const usuario = document.getElementById("email").value
+    const email = document.getElementById("email").value
     const contraseña = document.getElementById("contraseña").value
-    console.log(usuario, contraseña)
+    console.log(email, contraseña)
     try { 
       const makeLogin = await fetch('http://localhost:3001/ingresar', {
         method: 'POST',

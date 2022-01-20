@@ -1,13 +1,19 @@
 //Importamos los modulos requeridos
 const sequelize = require('../../../database/conexion')
-
+const { QueryTypes } = require('sequelize');
 
 //Exportamos los modulos
 
 module.exports.encontrarUsuario = async (usuario)=> {
   try {
-      let usuarioEncontrado = await sequelize.query({where: {email: `${email.email}`, pass: `${contraseña.contraseña}`}})
-      console.log(usuarioEncontrado)
+      let usuarioEncontrado = await sequelize.query(
+        `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`,
+        //{
+         // replacements: { contraseña: usuario.contraseña, email: usuario.email},
+          //type: QueryTypes.SELECT
+        //}
+      );
+      console.log('usuarioEncontrado', usuarioEncontrado)
       return usuarioEncontrado
   }catch (error){
       console.log("Error al encontrar usuario en modelo")

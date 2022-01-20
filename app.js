@@ -42,9 +42,11 @@ async function serverStart (){
     await sequelize.authenticate();
     console.log('Correct SQL conecction');
     app.listen(3001,(req, res)=>{
-       console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
+        console.log(`System Start in: http://localhost:3001`)
+       //console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
     })
-}catch(error){
+}catch(error) {
+    console.log(error)
     console.error('SQL error conection')
 }}
 serverStart ()

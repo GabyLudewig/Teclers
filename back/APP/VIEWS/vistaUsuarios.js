@@ -10,25 +10,25 @@ module.exports = async (app)=>{
       const usuario = req.body
       try {
         const usuarioNuevo = await ControladorUsuarios.addUser(usuario)
-        res.status(200).json({ message: 'Usuario creado exitosamente', usuario: usuarioNuevo})
+        res.status(200).json({ message: 'Usuario creado exitosamente vista', usuario: usuarioNuevo})
       } catch (err) {
         res.status(400).json({ message: 'Hubo un error creando el usuario en la vista', error: err})
       }
     })
 
-    app.post('/ingresar', midd.validarLogin, async (req, res) => {
-      const usuario = req.body
-      try {
-        const usuarioExistente = await ControladorUsuarios.findUser(usuario)
+    // app.post('/ingresar', async (req, res) => {
+    //   const usuario = req.body
+    //   try {
+    //     const usuarioExistente = await ControladorUsuarios.findUser(usuario)
 
-        // Genera token y lo regresa en la respuesta si el usuario existe
-        if(usuarioExistente) {
-          let validacion = await ControladorUsuarios.generaToken(usuarioExistente)
-          res.status(200).json({ message: 'Usuario ingresado exitosamente', token: validacion})
-        }
-      } catch (err) {
-        res.status(400).json({ message: 'Usuario no registrado', error: err})
-      }
-    })
+    //    // Genera token y lo regresa en la respuesta si el usuario existe
+    //     if(usuarioExistente) {
+    //       let validacion = await ControladorUsuarios.generaToken(usuarioExistente)
+    //       res.status(200).json({ message: 'Usuario ingresado exitosamente', token: validacion})
+    //     }
+    //   } catch (err) {
+    //     res.status(400).json({ message: 'Usuario no registrado', error: err})
+    //   }
+    // })
 
 }

@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express()
 const sequelize = require("./database/conexion");
 const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios");
+const vistaAmigos = require('./back/APP/VIEWS/vistaAmigos')
 
 //2-Seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({extended:false}));
@@ -18,11 +19,7 @@ dotenv.config({path:'/ENV'});
 app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname + '/public'))
 
-//5-Establecemos el motor de platillas
-app.set('view engine', 'ejs');
 
-//6-Invocamos a bcryptjs
-require('bcryptjs')
 
 //7-Var. de session
 const session = require('express-session');
@@ -49,8 +46,9 @@ async function serverStart (){
     console.log(error)
     console.error('SQL error conection')
 }}
-serverStart ()
-vistaUsuario(app)
+serverStart ();
+vistaUsuario(app);
+vistaAmigos(app);
 
 
 

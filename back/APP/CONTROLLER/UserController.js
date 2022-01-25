@@ -3,8 +3,7 @@ const modeloUsuarios = require('../MODEL/UsuarioModel')
 
 module.exports.addUser = async (usuario)=> {
  
-  return (await modeloUsuarios.crearUsuario(usuario))
-  
+  return (await modeloUsuarios.crearUsuario(usuario))  
 }
 
 module.exports.loginUsuario = async (usuario)=> {

@@ -4,18 +4,23 @@ const { QueryTypes } = require('sequelize');
 
 
 module.exports.crearUsuario = async (usuario) => {
-  
+
+  try{  
     let validarUsuario = await sequelize.query(
       `SELECT * FROM usuarios WHERE email = '${usuario.email}'`)
     if (!validarUsuario[0][0]) {
       let usuarioNuevo = await sequelize.query(`INSERT INTO usuarios (nombres, apellidos, email, contraseña, fecha_nac) 
         VALUES ('${usuario.nombres}','${usuario.apellidos}','${usuario.email}','${usuario.contraseña}',
         '${usuario.fecha_nac}')`)
-        return usuarioNuevo
-    }else{
-      return 'Usuario ya existente'
-    }
-  
+        return {result: 'ok'}
+        
+  }else{
+    return {result: 'error'}
+  }
+    }catch (error) {
+      console.log("Error en modelo")
+      throw new Error (error)
+  }
 }
 
 module.exports.loginUsuario = async (usuario) => {
@@ -35,5 +40,18 @@ module.exports.borrarUsuario = async (idUsuario) => {
   } catch (error) {
     console.log("Error al borrar usuario en modelo")
     throw new Error(error)
+  }
+}
+
+module.exports.encontrarAmigo = async (amigo) => {
+  try {
+      let amigoEncontrado = await sequelize.query(
+          `SELECT * FROM amigos WHERE nombres = '${amigo.nombres}' AND apellidos = '${amigo.apellidos}'`,
+      )
+      console.log('amigoEncontrado', amigoEncontrado)
+      return amigoEncontrado
+  } catch (error) {
+      console.log("Error al encontar al amigo en el modelo")
+      throw new Error (error)
   }
 }

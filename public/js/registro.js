@@ -9,7 +9,7 @@ async function registro() {
     console.log(contraseña, email, apellidos, fecha_nac)
     
     try { 
-      const makeRegistro = await fetch(`http://${process.env.HOST}:${process.env.PORT}`, {
+      const makeRegistro = await fetch(`http://localhost:3001/usuario`, {
         method: 'POST',
         headers: {"Content-type": "application/json;charset=UTF-8"},
         body: JSON.stringify({
@@ -20,14 +20,20 @@ async function registro() {
              fecha_nac: fecha_nac
         })
       });
+
+      const parsedRegistro = await makeRegistro.json()
+      console.log(parsedRegistro.usuarioNuevo.result)
      
-        alert("Registro exitoso")
-        return window.location.href = './inicio.html'
-        
-    
-      
+      if (parsedRegistro.usuarioNuevo.result == 'ok' ) {
+       
+       alert("Registro exitoso")
+       return window.location.href = './inicio.html'
+      } else {
+        alert("Usuario ya registrado")
+      }
     } catch(err) {
       console.log(err)
       throw new Error("Registro exitoso'nt")
+      
     }
   }

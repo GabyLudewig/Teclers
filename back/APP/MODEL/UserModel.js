@@ -21,15 +21,22 @@ module.exports.encontrarUsuario = async (usuario)=> {
   }
 }
 
-module.exports.crearUsuario = async (usuario)=> {
-  try {
+module.exports.crearUsuario = async (usuario) => {
+
+  try{  
+    let validarUsuario = await sequelize.query(
+      `SELECT * FROM usuarios WHERE email = '${usuario.email}'`)
+    if (!validarUsuario[0][0]) {
       let usuarioNuevo = await sequelize.query(`INSERT INTO usuarios (nombres, apellidos, email, contraseña, fecha_nac) 
-      VALUES ('${usuario.nombres}','${usuario.apellidos}','${usuario.email}','${usuario.contraseña}',
-      '${usuario.fecha_nac}')`)
-      console.log(usuarioNuevo)
-      return usuarioNuevo
-  }catch (error){
-      console.log("Error al crear usuario en modelo")
+        VALUES ('${usuario.nombres}','${usuario.apellidos}','${usuario.email}','${usuario.contraseña}',
+        '${usuario.fecha_nac}')`)
+        return {result: 'ok'}
+
+  }else{
+    return {result: 'error'}
+  }
+    }catch (error) {
+      console.log("Error en modelo")
       throw new Error (error)
   }
 }

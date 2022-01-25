@@ -32,11 +32,15 @@ module.exports.findUser = async (usuario)=> {
 
 
 module.exports.addUser = async (usuario)=> {
-  try {
-      let result = await modeloUsuarios.crearUsuario(usuario)
-      return result
-  }catch (error) {
-      console.log("Error al crear usuario en controlador", error)
-      throw new Error (error)
-  }
+
+  return (await modeloUsuarios.crearUsuario(usuario))  
+}
+
+module.exports.loginUsuario = async (usuario)=> {
+ 
+  let res = await modeloUsuarios.loginUsuario(usuario)
+  if (res.loginUsuario) {
+  return res    
+  } 
+  return 'Usuario o contraseña incorrectas'
 }

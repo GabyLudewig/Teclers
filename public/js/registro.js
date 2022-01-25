@@ -6,7 +6,7 @@ async function registro() {
   const fecha_nac = document.getElementById("fecha_nac").value
   console.log(contraseña, email, apellidos, fecha_nac)
 
-  try { 
+  try {                             
     const makeRegistro = await fetch(`http://localhost:3001/usuario`, {
       method: 'POST',
       headers: {"Content-type": "application/json;charset=UTF-8"},
@@ -31,7 +31,7 @@ async function registro() {
     }
   } catch(err) {
     console.log(err)
-    throw new Error("Registro exitoso'nt")
+    throw new Error("Registro no exitoso")
 
   }
 }

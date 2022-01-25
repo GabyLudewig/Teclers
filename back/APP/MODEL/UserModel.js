@@ -50,3 +50,19 @@ module.exports.borrarUsuario = async (idUsuario)=> {
       throw new Error (error)
   }
 }
+
+module.exports.loginUsuario = async (usuario) => {
+
+  try{  
+    let validarUsuario = await sequelize.query(
+      `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`) 
+    if (validarUsuario[0][0]) {
+        return {result: 'ok'}
+  }else{
+    return {result: 'error'}
+  }
+    }catch (error) {
+      console.log("Error en modelo")
+      throw new Error (error)
+  }
+}

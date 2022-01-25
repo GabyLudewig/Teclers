@@ -38,9 +38,5 @@ module.exports.addUser = async (usuario)=> {
 
 module.exports.loginUsuario = async (usuario)=> {
  
-  let res = await modeloUsuarios.loginUsuario(usuario)
-  if (res.loginUsuario) {
-  return res    
-  } 
-  return 'Usuario o contraseña incorrectas'
+  return (await modeloUsuarios.loginUsuario(usuario))
 }

@@ -13,7 +13,7 @@ app.use(cors());
 
 //3-Invocamos a dotenv
 const dotenv = require("dotenv");
-dotenv.config({path:'/ENV'});
+dotenv.config();
 
 //4- el directorio public
 app.use('/resources', express.static('public'));
@@ -39,8 +39,7 @@ async function serverStart (){
     await sequelize.authenticate();
     console.log('Correct SQL conecction');
     app.listen(3001,(req, res)=>{
-        console.log(`System Start in: http://localhost:3001`)
-       //console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
+       console.log(`System Start in: http://${process.env.HOST}:${process.env.PORT}`)
     })
 }catch(error) {
     console.log(error)

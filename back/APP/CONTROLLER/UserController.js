@@ -1,9 +1,17 @@
 
-const modeloUsuarios = require('../MODEL/UserModel')
-
+const modeloUsuarios = require('../MODEL/UsuarioModel')
 
 module.exports.addUser = async (usuario)=> {
  
-  await modeloUsuarios.crearUsuario(usuario)
-  return 'Usuario agregado controller'
+  return (await modeloUsuarios.crearUsuario(usuario))
+  
+}
+
+module.exports.loginUsuario = async (usuario)=> {
+ 
+  let res = await modeloUsuarios.loginUsuario(usuario)
+  if (res.loginUsuario) {
+  return res    
+  } 
+  return 'Usuario o contraseña incorrectas'
 }

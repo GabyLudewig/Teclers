@@ -9,7 +9,7 @@ async function registro() {
     console.log(contraseña, email, apellidos, fecha_nac)
     
     try { 
-      const makeRegistro = await fetch('http://localhost:3001/usuario', {
+      const makeRegistro = await fetch(`http://${process.env.HOST}:${process.env.PORT}`, {
         method: 'POST',
         headers: {"Content-type": "application/json;charset=UTF-8"},
         body: JSON.stringify({

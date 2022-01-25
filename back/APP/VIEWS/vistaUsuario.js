@@ -1,6 +1,6 @@
 //Importamos los modulos que vamos a utilizar
 const midd = require('../../../middlewares/midd.usuarios')
-const ControladorUsuarios = require('../CONTROLLER/UserController')
+const ControladorUsuarios = require('../CONTROLLER/userController')
 const cors = require('cors')
 
 //Exportar los modulos para ser usados.
@@ -16,15 +16,22 @@ module.exports = async (app)=>{
       }
     })
 
-    // app.post('/ingresar', async (req, res) => {
+    app.post('/login', async (req, res) => {
+      
+        let result = await ControladorUsuarios.loginUsuario(req.body)
+        res.send(result)      
+      }
+    )
+
+    // app.post('/login', async (req, res) => {
     //   const usuario = req.body
     //   try {
-    //     const usuarioExistente = await ControladorUsuarios.findUser(usuario)
+    //     const usuarioExistente = await ControladorUsuarios.loginUsuario(usuario)
 
     //    // Genera token y lo regresa en la respuesta si el usuario existe
     //     if(usuarioExistente) {
-    //       let validacion = await ControladorUsuarios.generaToken(usuarioExistente)
-    //       res.status(200).json({ message: 'Usuario ingresado exitosamente', token: validacion})
+
+    //       res.status(200).json({ message: 'Usuario ingresado exitosamente'})
     //     }
     //   } catch (err) {
     //     res.status(400).json({ message: 'Usuario no registrado', error: err})

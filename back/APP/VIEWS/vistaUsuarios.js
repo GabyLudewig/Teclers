@@ -12,7 +12,7 @@ module.exports = async (app)=>{
       const usuarioNuevo = await ControladorUsuarios.addUser(usuario)
       res.status(200).json({usuarioNuevo})
     } catch (err) {
-      res.status(400).json({ message: 'Hubo un error creando el usuario en la vista', error: err})
+      res.status(400).json({ message: 'Error en formato de datos', error: err})
     }
   })
 

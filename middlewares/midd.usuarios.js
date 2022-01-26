@@ -17,8 +17,8 @@ module.exports.validarDatosDeUsuario = async (req, res, next) =>{
         await Joi.attempt(req.body, modeloCrearUsuario, 'Alguno de los datos no es correcto')
         return next()
     }catch(error){
-        console.log(error)
-        res.status(500).json(error.message)
+        console.log('validation ' + error)
+        res.status(500).json(error)
     }
 }
 

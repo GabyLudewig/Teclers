@@ -31,7 +31,9 @@ async function registro() {
     }
   } catch(err) {
     console.log(err)
+    alert ('Datos incorrectos')
     throw new Error("Registro no exitoso")
+    
 
   }
 }

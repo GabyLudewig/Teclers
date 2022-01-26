@@ -7,7 +7,6 @@ const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios");
 const vistaAmigos = require('./back/APP/VIEWS/vistaAmigos');
 const vistaPerfil = require("./back/APP/VIEWS/vistaPerfil");
 //2-Seteamos urlencoded para capturar los datos del formulario
-app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(cors());
 
@@ -49,9 +48,3 @@ serverStart ();
 vistaUsuario(app);
 vistaAmigos(app);
 vistaPerfil(app);
-
-
-
-
-
-

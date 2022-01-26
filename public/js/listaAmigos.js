@@ -28,6 +28,7 @@ function getData() {
                             <li class="list-group-item"><h2>Edad: ${amigo.edad}</h2></li>
 
                         </ul>
+                        <button type="button" onclick="agregar()">Agregar Amigo</button>
                     </div>
                 </div> `;
             });

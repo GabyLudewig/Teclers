@@ -13,3 +13,11 @@ module.exports.encontrarAmigo = async (amigo) => {
         throw new Error (error)
     }
 }
+
+module.exports.list = async (amigo) => {
+    
+    let result = await sequelize.query('SELECT * FROM amigos')
+   return result
+}
+
+

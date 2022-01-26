@@ -4,8 +4,8 @@ const cors = require("cors");
 const app = express()
 const sequelize = require("./database/conexion");
 const vistaUsuario = require("./back/APP/VIEWS/vistaUsuarios");
-const vistaAmigos = require('./back/APP/VIEWS/vistaAmigos')
-
+const vistaAmigos = require('./back/APP/VIEWS/vistaAmigos');
+const vistaPerfil = require("./back/APP/VIEWS/vistaPerfil");
 //2-Seteamos urlencoded para capturar los datos del formulario
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -48,7 +48,7 @@ async function serverStart (){
 serverStart ();
 vistaUsuario(app);
 vistaAmigos(app);
-
+vistaPerfil(app);
 
 
 

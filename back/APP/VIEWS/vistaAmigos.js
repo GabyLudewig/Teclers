@@ -1,6 +1,7 @@
 const controladorAmigos = require('../CONTROLLER/amigosController')
 
 module.exports = async (app) => {
+
     app.get('/buscar', async (req, res) => {
         const amigo = req.body
         try {
@@ -11,17 +12,15 @@ module.exports = async (app) => {
             
         }
     })
+
+    app.get('/amigos', async (req, res) => {
+        const amigo = req.body     
+        try{ 
+            const lista = await controladorAmigos.listarAmigos(amigo)
+            res.status(200).json({message: 'lista', amigo: lista});
+                    }catch (error){
+                res.status(400).json({message: 'error en vista'})
+            }
+    })
 }
 
-//Funcion de agregar amigos pendiente :D
-
-//module.exports = async (app) => {
-    //app.get('/agregar', async (req, res) => {
-        //const amigo = req.body
-        //try {
-            //const amigoNuevo = await 
-        //} catch (error) {
-            
-        //}
-    //})
-//}

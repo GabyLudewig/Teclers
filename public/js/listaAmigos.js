@@ -22,17 +22,18 @@ function getData() {
                 <div class="container">
                     <div class="card mt-4 bg-light">
                         <ul class="list-group">
-                            <li class="list-group-item"><h2>Name: ${lists.name.first}</h2></li>
+                            <li class="list-group-item"><h2 id = "nombreAmigo">Name: ${lists.name.first}</h2></li>
                             <li class="list-group-item"><img src="${lists.picture.large}"></li>
                             <li class="list-group-item">Phone Number: ${lists.cell}</li>
                             <li class="list-group-item">DOB: ${lists.dob.date}</li>
-                            <li class="list-group-item">Age: ${lists.dob.age}</li>
-                            <li class="list-group-item">Email ID: ${lists.email}</li>
+                            <li class="list-group-item" id = "edadAmigo">Age: ${lists.dob.age}</li>
+                            <li class="list-group-item" id = "emailAmigo">Email ID: ${lists.email}</li>
                             <li class="list-group-item">Gender: ${lists.gender}</li>
                             <li class="list-group-item">City: ${lists.location.city}</li>
                             <li class="list-group-item">Country: ${lists.location.country}</li>
                             <li class="list-group-item">PostCode: ${lists.location.postcode}</li>
                         </ul>
+                        <button type="button" onclick="agregar()">Agregar Amigo</button>
                     </div>
                 </div> `;
             });

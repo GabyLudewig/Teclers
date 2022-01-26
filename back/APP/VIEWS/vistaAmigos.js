@@ -12,16 +12,3 @@ module.exports = async (app) => {
         }
     })
 }
-
-//Funcion de agregar amigos pendiente :D
-
-//module.exports = async (app) => {
-    //app.get('/agregar', async (req, res) => {
-        //const amigo = req.body
-        //try {
-            //const amigoNuevo = await 
-        //} catch (error) {
-            
-        //}
-    //})
-//}

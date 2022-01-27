@@ -20,10 +20,16 @@ module.exports = async (app)=>{
       const usuario = req.body
       try {
         const usuarioExistente = await ControladorUsuarios.loginUsuario(usuario)
-          res.status(200).json({usuarioExistente})
+          res.status(200).json({usuarioExistente, usuario})
       } catch (err) {
         res.status(400).json({ message: 'Usuario no registrado', error: err})
       }
     })
+  
 
+    app.post('/buscarUsuario', async (req, res) => {
+      const usuario = req.body
+          const busca = await ControladorUsuarios.buscarUsuario(usuario)
+          res.send ({busca})
+  })
 }

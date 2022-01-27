@@ -40,3 +40,9 @@ module.exports.loginUsuario = async (usuario)=> {
  
   return (await modeloUsuarios.loginUsuario(usuario))
 }
+
+module.exports.buscarUsuario = async (usuario) => {
+ 
+      return await modeloUsuarios.buscarUsuario(usuario)
+}
+

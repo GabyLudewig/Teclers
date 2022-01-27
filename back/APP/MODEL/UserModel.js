@@ -8,10 +8,6 @@ module.exports.encontrarUsuario = async (usuario)=> {
   try {
       let usuarioEncontrado = await sequelize.query(
         `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`,
-        //{
-         // replacements: { contraseña: usuario.contraseña, email: usuario.email},
-          //type: QueryTypes.SELECT
-        //}
       );
       console.log('usuarioEncontrado', usuarioEncontrado)
       return usuarioEncontrado
@@ -20,6 +16,15 @@ module.exports.encontrarUsuario = async (usuario)=> {
       throw new Error (error)
   }
 }
+
+module.exports.buscarUsuario = async (usuario) => {
+  
+  let res = await sequelize.query(
+    `SELECT * FROM usuarios WHERE email = '${usuario.usuario}' `) 
+     return {res}
+
+}
+
 
 module.exports.crearUsuario = async (usuario) => {
 
@@ -66,3 +71,4 @@ module.exports.loginUsuario = async (usuario) => {
       throw new Error (error)
   }
 }
+

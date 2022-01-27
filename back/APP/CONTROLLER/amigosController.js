@@ -1,8 +1,8 @@
 const modeloAmigos = require('../MODEL/amigosModel');
 
-module.exports.findFriend = async (amigo) => {
+module.exports.buscar = async (tecler) => {
     try {
-        let resultado = await modeloAmigos.encontrarAmigo(amigo)
+        let resultado = await modeloAmigos.listAmigo(tecler)
         return resultado
     } catch (error) {
         console.log("Error al encontar amigo en el cotrolador", error)
@@ -21,3 +21,10 @@ module.exports.listarAmigos = async (amigo) => {
     }
     
 }
+
+module.exports.validarAmigo = async (tecler)=> {
+ 
+    return (await modeloAmigos.validarAmigo(tecler))
+  }
+
+  

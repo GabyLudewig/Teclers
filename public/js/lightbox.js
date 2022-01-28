@@ -4,7 +4,7 @@ const contenedorLight = document.querySelector('.imagen-light');
 const hamburger1 = document.querySelector('.hamburger')
 
 
-imagenes.forEach(imagen =>{
+imagenes.forEach(imagen => {
     imagen.addEventListener('click', () => {
         aparecerImagen(imagen.getAttribute('src'))
     })
@@ -12,7 +12,7 @@ imagenes.forEach(imagen =>{
 
 
 contenedorLight.addEventListener('click', (e) => {
-    if(e.target !== imagenesLight){
+    if (e.target !== imagenesLight) {
         contenedorLight.classList.toggle('show')
         imagenesLight.classList.toggle('showImage')
         hamburger1.style.opacity = '1'

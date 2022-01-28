@@ -1,5 +1,5 @@
 async function buscarUnAmigo() {
-    const tecler = document.getElementById("tecler").value
+    const tecler = localStorage.getItem('amigoEncontrado')
     console.log(tecler)
     try{
     const busca = await fetch(`http://localhost:3001/buscar`, {
@@ -11,10 +11,11 @@ async function buscarUnAmigo() {
         });
 
         const parsedBusqueda = await busca.json()
-        console.log (parsedBusqueda.busca.res[0][0])
+        console.log (parsedBusqueda.busca)
          let amigoEncontrado = parsedBusqueda.busca.res[0]
+         
+    
     console.log (amigoEncontrado)
-
     
     amigoEncontrado.forEach(function (tecler) {
         output += `
@@ -32,8 +33,14 @@ async function buscarUnAmigo() {
     });
 
     document.getElementById('output').innerHTML = output;  
+    
 }catch(err) {
     console.log(err)
     throw new Error("Busqueda no exitosa")
 } 
+
 }
+
+buscarUnAmigo()
+
+

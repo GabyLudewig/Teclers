@@ -1,24 +1,15 @@
-//Get Btn And Create Function
-//document.getElementById('myBtn').addEventListener('click', getData);
 
 function getData() {
-    // console.log('test');
 
-    //Get API
-    fetch('http://localhost:3001/amigos')
-        .then(res => res.json())
-        .then(data => {
-             console.log(data);
+  fetch('http://localhost:3001/amigos')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      let author = data.amigo[0];
+      let output = "<h2><center></center></h2>";
 
-            let author = data.amigo[0];
-           //  console.log(author.amigo[0]);
-
-            //Get Data Value
-            let output = "<h2><center></center></h2>";
-
-            //Get Data Loop Through
-            author.forEach(function (amigo) {
-                output += `
+      author.forEach(function (amigo) {
+        output += `
                 <div class="container">
                     <div class="card mt-4 bg-light">
                         <ul class="list-group">
@@ -30,36 +21,35 @@ function getData() {
                         </ul>
                     </div>
                 </div> `;
-            });
+      });
 
-          //  Show On Our Screen All Data
-           document.getElementById('output').innerHTML = output;
+      //  Show On Our Screen All Data
+      document.getElementById('output').innerHTML = output;
 
-        });
+    });
 };
 
 async function buscarAmigo() {
-    const  tecler = document.getElementById("tecler").value
+  const tecler = document.getElementById("tecler").value
 
-    try { 
-      const busca = await fetch(`http://localhost:3001/buscaAmigo`, {
-        method: 'POST',
-        headers: {"Content-type": "application/json;charset=UTF-8"},
-        body: JSON.stringify({
-            tecler: tecler
-        })
-      });
-      const parsedBusqueda = await busca.json()
-      console.log (parsedBusqueda.busca.result)
-      if (parsedBusqueda.busca.result == 'ok') {
-        return window.location.href = './buscarAmigo.html'
-      } else {
-        alert("Amigo no encontrado")
-      }
-    } catch(err) {
-      console.log(err)
-      throw new Error("Busqueda no exitosa")
-    }
+  try {
+    const busca = await fetch(`http://localhost:3001/buscar`, {
+      method: 'POST',
+      headers: { "Content-type": "application/json;charset=UTF-8" },
+      body: JSON.stringify({
+        tecler: tecler
+      })
+    });
+    const parsedBusqueda = await busca.json()
+    console.log(parsedBusqueda)
+    let amigoEncontrado = parsedBusqueda.busca.res[0][0]
+    localStorage.setItem('amigoEncontrado', amigoEncontrado.nombres);
+    return window.location.href = './buscarAmigo.html'
+  } catch (err) {
+    alert("No hay coincidencias")
+    console.log(err)
+    throw new Error("Busqueda no exitosa")
   }
+}
 
 getData()

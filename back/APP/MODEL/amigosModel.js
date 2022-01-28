@@ -17,33 +17,16 @@ const { QueryTypes } = require('sequelize');
 //     throw new Error (error)
 // }
 // }
-  
 
 module.exports.list = async (amigo) => {
-    
-    let result = await sequelize.query('SELECT * FROM amigos')
-   return result
+
+  let result = await sequelize.query('SELECT * FROM amigos')
+  return result
 }
 
-module.exports.validarAmigo = async (tecler) => {
-    try{  
-      let validarAmigo = await sequelize.query(
-        `SELECT * FROM amigos WHERE nombres = '${tecler.tecler}' `) 
-        console.log(validarAmigo[0][0])
-      if (validarAmigo[0][0]) {
-          return {result: 'ok'}
-    }else{
-      return {result: 'error'}
-    }
-      }catch (error) {
-        console.log("Error en modelo")
-        throw new Error (error)
-    }
-  }
+module.exports.listAmigo = async (tecler) => {
 
-  module.exports.listAmigo = async (tecler) => {
-        
-      let res = await sequelize.query(
-        `SELECT * FROM amigos WHERE nombres = '${tecler.tecler}' `) 
-         return {res}
-  }
+  let res = await sequelize.query(
+    `SELECT * FROM amigos WHERE nombres like '%${tecler.tecler}%' `)
+  return { res }
+}

@@ -2,7 +2,7 @@
 
 async function buscarUsuario() {
     const usuario = localStorage.getItem('email')
-    
+
     console.log(usuario)
     try {
         const busca = await fetch(`http://localhost:3001/buscarUsuario`, {
@@ -12,14 +12,14 @@ async function buscarUsuario() {
                 usuario: usuario
             })
         });
-        
+
         const parsedBusqueda = await busca.json()
         console.log(parsedBusqueda.busca.res[0][0])
         let usuarioEncontrado = parsedBusqueda.busca.res[0][0]
         console.log(usuarioEncontrado.nombres)
-        
-            
-            output += `
+
+
+        output += `
                 <div class="container">
                     <div class="card mt-4 bg-light">
                         <ul class="list-group">
@@ -32,14 +32,14 @@ async function buscarUsuario() {
                         </ul>
                     </div>
                 </div> `;
-    
-            
+
+
         document.getElementById('output').innerHTML = output;
     } catch (err) {
         console.log(err)
         throw new Error("Busqueda no exitosa")
     }
- 
+
 }
 
 buscarUsuario()

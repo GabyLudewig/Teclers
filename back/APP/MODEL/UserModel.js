@@ -4,71 +4,46 @@ const { QueryTypes } = require('sequelize');
 
 //Exportamos los modulos
 
-module.exports.encontrarUsuario = async (usuario)=> {
-  try {
-      let usuarioEncontrado = await sequelize.query(
-        `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`,
-      );
-      console.log('usuarioEncontrado', usuarioEncontrado)
-      return usuarioEncontrado
-  }catch (error){
-      console.log("Error al encontrar usuario en modelo")
-      throw new Error (error)
-  }
-}
-
 module.exports.buscarUsuario = async (usuario) => {
-  
+
   let res = await sequelize.query(
-    `SELECT * FROM usuarios WHERE email = '${usuario.usuario}' `) 
-     return {res}
-
+    `SELECT * FROM usuarios WHERE email = '${usuario.usuario}' `)
+  return { res }
 }
-
 
 module.exports.crearUsuario = async (usuario) => {
 
-  try{  
+  try {
     let validarUsuario = await sequelize.query(
       `SELECT * FROM usuarios WHERE email = '${usuario.email}'`)
     if (!validarUsuario[0][0]) {
       let usuarioNuevo = await sequelize.query(`INSERT INTO usuarios (nombres, apellidos, email, contraseña, fecha_nac) 
         VALUES ('${usuario.nombres}','${usuario.apellidos}','${usuario.email}','${usuario.contraseña}',
         '${usuario.fecha_nac}')`)
-        return {result: 'ok'}
+      return { result: 'ok' }
 
-  }else{
-    return {result: 'error'}
-  }
-    }catch (error) {
-      console.log("Error en modelo")
-      throw new Error (error)
-  }
-}
-
-module.exports.borrarUsuario = async (idUsuario)=> {
-  try {
-      let usuarioBorrado = await Usuarios.destroy({where: {id: `${idUsuario}`}})
-      return usuarioBorrado
-  }catch (error){
-      console.log("Error al borrar usuario en modelo")
-      throw new Error (error)
+    } else {
+      return { result: 'error' }
+    }
+  } catch (error) {
+    console.log("Error en modelo")
+    throw new Error(error)
   }
 }
 
 module.exports.loginUsuario = async (usuario) => {
 
-  try{  
+  try {
     let validarUsuario = await sequelize.query(
-      `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`) 
+      `SELECT * FROM usuarios WHERE email = '${usuario.email}' AND contraseña = '${usuario.contraseña}'`)
     if (validarUsuario[0][0]) {
-        return {result: 'ok'}
-  }else{
-    return {result: 'error'}
-  }
-    }catch (error) {
-      console.log("Error en modelo")
-      throw new Error (error)
+      return { result: 'ok' }
+    } else {
+      return { result: 'error' }
+    }
+  } catch (error) {
+    console.log("Error en modelo")
+    throw new Error(error)
   }
 }
 

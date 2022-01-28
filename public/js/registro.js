@@ -6,34 +6,32 @@ async function registro() {
   const fecha_nac = document.getElementById("fecha_nac").value
   console.log(contraseña, email, apellidos, fecha_nac)
 
-  try {                             
+  try {
     const makeRegistro = await fetch(`http://localhost:3001/usuario`, {
       method: 'POST',
-      headers: {"Content-type": "application/json;charset=UTF-8"},
+      headers: { "Content-type": "application/json;charset=UTF-8" },
       body: JSON.stringify({
-           nombres: nombres,
-           contraseña: contraseña,
-           email: email,
-           apellidos: apellidos,
-           fecha_nac: fecha_nac
+        nombres: nombres,
+        contraseña: contraseña,
+        email: email,
+        apellidos: apellidos,
+        fecha_nac: fecha_nac
       })
     });
 
     const parsedRegistro = await makeRegistro.json()
     console.log(parsedRegistro.usuarioNuevo.result)
 
-    if (parsedRegistro.usuarioNuevo.result == 'ok' ) {
+    if (parsedRegistro.usuarioNuevo.result == 'ok') {
 
-     alert("Registro exitoso")
-     return window.location.href = './inicio.html'
+      alert("Registro exitoso")
+      return window.location.href = './inicio.html'
     } else {
       alert("Usuario ya registrado")
     }
-  } catch(err) {
+  } catch (err) {
     console.log(err)
-    alert ('Datos incorrectos')
+    alert('Datos incorrectos')
     throw new Error("Registro no exitoso")
-    
-
   }
 }

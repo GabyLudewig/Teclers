@@ -28,7 +28,7 @@ async function buscarUsuario() {
                             <li class="list-group-item"><h2>Apellidos: ${usuarioEncontrado.apellidos}</h2></li>
                             <li class="list-group-item"><h2>Fecha de Nacimiento: ${usuarioEncontrado.fecha_nac}</h2></li>
                             <li class="list-group-item"><h2>Correo electronico: ${usuarioEncontrado.email}</h2></li>
-
+                    
                         </ul>
                     </div>
                 </div> `;

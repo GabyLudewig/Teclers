@@ -26,9 +26,34 @@ module.exports = async (app) => {
     }
   })
 
+
   app.post('/buscarUsuario', async (req, res) => {
     const usuario = req.body
     const busca = await ControladorUsuarios.buscarUsuario(usuario)
     res.send({ busca })
   })
+
+  app.post('/buscarPerfilUsuario', async (req, res) => {
+    const id = req.body
+    const busca = await ControladorUsuarios.buscarPerfilUsuario(id)
+    res.send({ busca })
+  })
+
+
+  app.get('/teclers', async (req, res) => {
+    const tecler = req.body
+    try {
+        const lista = await ControladorUsuarios.tecler(tecler)
+        res.status(200).json({ message: 'lista', tecler: lista });
+    } catch (error) {
+        res.status(400).json({ message: 'error en vista' })
+    }
+})
+
+app.post('/buscarUnTecler', async (req, res) => {
+  const tecler = req.body
+  const busca = await ControladorUsuarios.buscarUnTecler(tecler)
+  res.send({ busca })
+})
+
 }

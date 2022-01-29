@@ -17,3 +17,19 @@ module.exports.buscarUsuario = async (usuario) => {
   return await modeloUsuarios.buscarUsuario(usuario)
 }
 
+module.exports.buscarPerfilUsuario = async (id) => {
+
+  return await modeloUsuarios.buscarPerfilUsuario(id)
+}
+
+module.exports.tecler = async (tecler) => {
+
+  return await modeloUsuarios.tecler(tecler)
+    
+}
+
+module.exports.buscarUnTecler = async (tecler) => {
+
+  return await modeloUsuarios.buscarUnTecler(tecler)
+    
+}

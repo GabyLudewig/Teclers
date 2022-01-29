@@ -1,15 +1,20 @@
 
+async function buscarUsuario(id) {
 
-async function buscarUsuario() {
-    const usuario = localStorage.getItem('email')
 
-    console.log(usuario)
+   var queryString = window.location.search;
+   var urlParams = new URLSearchParams(queryString);
+   var id = urlParams.get('id')
+   console.log(id)
+
+
+    console.log(id)
     try {
-        const busca = await fetch(`http://localhost:3001/buscarUsuario`, {
+        const busca = await fetch(`http://localhost:3001/buscarPerfilUsuario`, {
             method: 'POST',
             headers: { "Content-type": "application/json;charset=UTF-8" },
             body: JSON.stringify({
-                usuario: usuario
+                id: id
             })
         });
 
@@ -42,28 +47,5 @@ async function buscarUsuario() {
 
 }
 
-async function buscarTecler() {
-    const tecler = document.getElementById("tecler").value
-
-    console.log(tecler)
-    try {
-        const busca = await fetch(`http://localhost:3001/buscarTecler`, {
-            method: 'POST',
-            headers: { "Content-type": "application/json;charset=UTF-8" },
-            body: JSON.stringify({
-                tecler:tecler
-            })
-        });
-
-        const parsedBusqueda = await busca.json()
-        console.log(parsedBusqueda)
-        let usuarioEncontrado = parsedBusqueda.busca.res[0][0]
-        console.log(usuarioEncontrado.nombres)
-
-    } catch (err) {
-        console.log(err)
-        throw new Error("Busqueda no exitosa")
-    }
-}
 
 buscarUsuario()

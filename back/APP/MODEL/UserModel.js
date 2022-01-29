@@ -47,3 +47,23 @@ module.exports.loginUsuario = async (usuario) => {
   }
 }
 
+
+module.exports.tecler = async () => {
+
+  let result = await sequelize.query('SELECT * FROM usuarios')
+  return result
+}
+
+module.exports.buscarUnTecler = async (tecler) => {
+
+  let res = await sequelize.query(
+    `SELECT * FROM usuarios WHERE nombres like '%${tecler.tecler}%' `)
+  return { res }
+}
+
+module.exports.buscarPerfilUsuario = async (id) => {
+
+  let res = await sequelize.query(
+    `SELECT * FROM usuarios WHERE id = '${id.id}' `)
+  return { res }
+}

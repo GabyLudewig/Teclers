@@ -56,9 +56,19 @@ module.exports.tecler = async () => {
 
 module.exports.buscarUnTecler = async (tecler) => {
 
-  let res = await sequelize.query(
-    `SELECT * FROM usuarios WHERE nombres like '%${tecler.tecler}%' `)
-  return { res }
+
+  const words = tecler.tecler.split (" ")
+  let res = []
+
+  
+  for(let i = 0; i<words.length; i++ ){
+
+      let word = await sequelize.query(`SELECT * FROM usuarios WHERE nombres LIKE '%${words[i]}%' OR apellidos LIKE '%${words[i]}%'`)
+      res.push(word)
+    }
+
+    
+  return {res,words,tecler }
 }
 
 module.exports.buscarPerfilUsuario = async (id) => {

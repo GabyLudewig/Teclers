@@ -12,7 +12,7 @@ async function buscarUnTecler() {
 
         const parsedBusqueda = await busca.json()
         console.log (parsedBusqueda.busca)
-         let teclerEncontrado = parsedBusqueda.busca.res[0]
+         let teclerEncontrado = parsedBusqueda.busca.res[0][0]
          
     
     console.log (teclerEncontrado)
@@ -41,5 +41,6 @@ async function buscarUnTecler() {
 
 }
 
-buscarUnTecler()
 
+
+buscarUnTecler()

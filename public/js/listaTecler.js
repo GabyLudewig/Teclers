@@ -37,11 +37,13 @@ function getData() {
         body: JSON.stringify({
           tecler: tecler
         })
+        
       });
+      console.log (busca)
       const parsedBusqueda = await busca.json()
       console.log(parsedBusqueda)
       let teclerEncontrado = parsedBusqueda.busca.res[0][0]
-      localStorage.setItem('teclerEncontrado', teclerEncontrado.nombres);
+      localStorage.setItem('teclerEncontrado', tecler);
       console.log (teclerEncontrado)
       return window.location.href = './buscarTecler.html'
     } catch (err) {

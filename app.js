@@ -11,7 +11,7 @@ app.use(cors());
 
 //3-Invocamos a dotenv
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({path:'/ENV'});
 
 //4- el directorio public
 app.use('/resources', express.static('public'));
